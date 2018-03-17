@@ -1,0 +1,4 @@
+Django==1.11.11
+psycopg2==2.7.4
+Pygments==2.0.2
+pytz==2018.3
