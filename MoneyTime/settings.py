@@ -1,6 +1,8 @@
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import dj_database_url
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -8,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'xr*y144h&o2tu=rtltcp-9zmav$jz&f8)ac(vy+h4^h1e&bc%r'
+SECRET_KEY = dj_database_url.config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,15 +80,11 @@ WSGI_APPLICATION = 'MoneyTime.wsgi.application'
 #     }
 # }
 
+# DEBUG = dj_database_url.config('DEBUG', default=False, cast=bool)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'd8dva704g1k0f3',
-        'USER': 'puafyrjhkyvsic',
-        'PASSWORD': '0a9ac878bec6a5b5219a45b20317bdf0da5cd6c94d3897752383163ec0456eb7',
-        'HOST': 'ec2-54-247-95-125.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
-    },
+    'default': dj_database_url.config(
+        default=dj_database_url.config('DATABASE_URL')
+    )
 }
 
 # Password validation
@@ -135,4 +133,6 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, 'staticfiles'),
 ]
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
