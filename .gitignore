@@ -104,3 +104,6 @@ ENV/
 
 # silk
 /uluruclub/static
+
+# database filling
+info/

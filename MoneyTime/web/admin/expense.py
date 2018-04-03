@@ -6,13 +6,13 @@ from MoneyTime.web.models import Expense
 
 class ExpenseAdmin(admin.OSMGeoAdmin):
     list_filter = ['created', ]
-    list_display = ['user', 'amount', 'created', 'category']
+    list_display = ['user', 'amount', 'created', 'category', 'location']
     fieldsets = [
         (None, {'fields': ('user',)}),
         (_('Expense'), {'fields': (
             'amount', 'category', 'location', )}),
         (_('Additional information'), {'fields': (
-            'creation_location', )}),
+            'creation_location',)}),
     ]
 
 

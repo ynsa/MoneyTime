@@ -67,17 +67,27 @@ WSGI_APPLICATION = 'MoneyTime.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#         'NAME': 'moneytime',
+#         'USER': 'moneytime',
+#         'PASSWORD': 'moneytime',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'moneytime',
-        'USER': 'moneytime',
-        'PASSWORD': 'moneytime',
-        'HOST': '127.0.0.1',
+        'NAME': 'd8dva704g1k0f3',
+        'USER': 'puafyrjhkyvsic',
+        'PASSWORD': '0a9ac878bec6a5b5219a45b20317bdf0da5cd6c94d3897752383163ec0456eb7',
+        'HOST': 'ec2-54-247-95-125.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
-    }
+    },
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -116,4 +126,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+# Deployment
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = [
+    os.path.join(PROJECT_ROOT, 'staticfiles'),
+]
 

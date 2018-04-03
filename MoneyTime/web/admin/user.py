@@ -7,6 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from MoneyTime.web.models import User
 
+admin.site.site_header = 'MoneyTime'
+
 
 class UserCreationFormExtended(UserCreationForm):
     def __init__(self, *args, **kwargs):

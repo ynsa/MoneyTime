@@ -25,7 +25,12 @@ class Location(models.Model):
         verbose_name=_('Category')
     )
 
+    name = models.CharField(_('Name'), null=True, blank=True, max_length=255)
+
     location = models.PointField(_('Location'), null=True, blank=True)
+
+    def __str__(self):
+        return '{0}({1})'.format(self.name, self.category)
 
     class Meta:
         verbose_name = _('Location')

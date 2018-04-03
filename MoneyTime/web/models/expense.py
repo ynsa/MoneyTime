@@ -3,7 +3,7 @@ from django.contrib.gis.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from MoneyTime.settings import AUTH_USER_MODEL
-from MoneyTime.web.models import ExpenseCategory
+from MoneyTime.web.models import ExpenseCategory, Location
 
 
 class Expense(models.Model):
@@ -42,7 +42,15 @@ class Expense(models.Model):
 
     created = models.DateTimeField(_('Created'), auto_now_add=True)
 
-    location = models.PointField(_('Where spent money'), null=True, blank=True)
+    location = models.ForeignKey(
+        Location,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='expense',
+        verbose_name=_('Location')
+    )
+
+    # location = models.PointField(_('Where spent money'), null=True, blank=True)
 
     creation_location = models.PointField(
         _('Where create expense'),
@@ -50,8 +58,8 @@ class Expense(models.Model):
         blank=True
     )
 
-    # def __str__(self):
-    #     return '{0} {1}'.format(self.user, self.created)
+    def __str__(self):
+        return '{0}-{1}-{2}'.format(self.pk, self.category, self.created)
 
     class Meta:
         ordering = ['-created']
