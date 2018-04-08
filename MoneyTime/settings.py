@@ -9,11 +9,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = dj_database_url.config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -86,10 +88,6 @@ db_from_env = dj_database_url.config(
     default=dj_database_url.config('DATABASE_URL')
 )
 DATABASES['default'].update(db_from_env)
-
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = dj_database_url.config('SECRET_KEY')
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
