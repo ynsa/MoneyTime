@@ -9,6 +9,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
+SECRET_KEY = 'xr*y144h&o2tu=rtltcp-9zmav$jz&f8)ac(vy+h4^h1e&bc%r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -92,15 +93,12 @@ DATABASES = {
 db_from_env = dj_database_url.config(
     default=dj_database_url.config('DATABASE_URL')
 )
-print(db_from_env)
-# DATABASES['default'].update(db_from_env)
-
-print(dj_database_url.config(conn_max_age=500))
-DATABASES['default'].update(dj_database_url.config(conn_max_age=500))
+DATABASES['default'].update(db_from_env)
+# DATABASES['default'].update(dj_database_url.config(conn_max_age=500))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = dj_database_url.config('SECRET_KEY')
+# SECRET_KEY = dj_database_url.config('SECRET_KEY')
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
