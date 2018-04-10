@@ -1,7 +1,5 @@
 import numpy as np
 from sklearn.tree import DecisionTreeClassifier
-import matplotlib.pyplot as plt
-import pylab as pl
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -54,11 +52,11 @@ def prediction(sender, **kwargs):
     prediction = tree.predict([x,])
     print('{0} {1}'.format(expense.created, expense.category))
     print(prediction)
-    pl.plot([0, 1], [0, 1], '--', color=(0.6, 0.6, 0.6))
-    pl.xlim([0, 1])
-    pl.ylim([0, 1])
-    pl.xlabel('False Positive Rate')
-    pl.ylabel('True Positive Rate')
-    pl.title('Receiver operating characteristic example')
-    pl.legend(loc="lower right")
+    # pl.plot([0, 1], [0, 1], '--', color=(0.6, 0.6, 0.6))
+    # pl.xlim([0, 1])
+    # pl.ylim([0, 1])
+    # pl.xlabel('False Positive Rate')
+    # pl.ylabel('True Positive Rate')
+    # pl.title('Receiver operating characteristic example')
+    # pl.legend(loc="lower right")
     # pl.show()
