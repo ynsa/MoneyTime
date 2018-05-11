@@ -25,6 +25,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',
+
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
 
     # Disable Django's own staticfiles handling in favour of WhiteNoise, for
     # greater consistency between gunicorn and `./manage.py runserver`. See:
@@ -79,13 +84,25 @@ WSGI_APPLICATION = 'MoneyTime.wsgi.application'
 
 # DEBUG = dj_database_url.config('DEBUG', default=False, cast=bool)
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#         'NAME': 'moneytime',
+#         'USER': 'moneytime',
+#         'PASSWORD': 'moneytime',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     },
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'moneytime',
-        'USER': 'moneytime',
-        'PASSWORD': 'moneytime',
-        'HOST': '127.0.0.1',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd8dva704g1k0f3',
+        'USER': 'puafyrjhkyvsic',
+        'PASSWORD': '0a9ac878bec6a5b5219a45b20317bdf0da5cd6c94d3897752383163ec0456eb7',
+        'HOST': 'ec2-54-247-95-125.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     },
 }
@@ -152,4 +169,22 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 # for heroku-buildpack-geodjango
 GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
 GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
+
+
+# REST settings
+
+PAGE_SIZE = 10
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        # 'rest_framework.renderers.AdminRenderer',
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': PAGE_SIZE,
+}
 

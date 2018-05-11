@@ -8,6 +8,7 @@ urlpatterns = [
         r'^favicon.ico$',
         RedirectView.as_view(url='/staticfiles/design/favicon.ico', permanent=True)
     ),
+    url(r'^api/', include('MoneyTime.api.urls')),
     url(r'^', include('MoneyTime.web.urls')),
 ]
 
