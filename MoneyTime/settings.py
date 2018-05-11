@@ -84,28 +84,17 @@ WSGI_APPLICATION = 'MoneyTime.wsgi.application'
 
 # DEBUG = dj_database_url.config('DEBUG', default=False, cast=bool)
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-#         'NAME': 'moneytime',
-#         'USER': 'moneytime',
-#         'PASSWORD': 'moneytime',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     },
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd8dva704g1k0f3',
-        'USER': 'puafyrjhkyvsic',
-        'PASSWORD': '0a9ac878bec6a5b5219a45b20317bdf0da5cd6c94d3897752383163ec0456eb7',
-        'HOST': 'ec2-54-247-95-125.eu-west-1.compute.amazonaws.com',
+        'NAME': 'moneytime',
+        'USER': 'moneytime',
+        'PASSWORD': 'moneytime',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
     },
 }
+
 
 db_from_env = dj_database_url.config(
     default=dj_database_url.config('DATABASE_URL')
