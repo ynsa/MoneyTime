@@ -6,6 +6,8 @@ from django.core.management import BaseCommand
 # import xlrd
 import csv
 
+from os import path
+
 from MoneyTime.web.models import Expense, ExpenseCategory, LocationCategory, \
     User, Location
 
@@ -87,4 +89,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         # csv_from_excel()
         filename = 'timetable_2.txt'
-        create_stats(filename, 1)
+        basepath = path.dirname(__file__)
+        filepath = path.abspath(
+            path.join(basepath, "..", "..", "..", "..", "info", filename))
+        create_stats(filepath, 1)
