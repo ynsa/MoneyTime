@@ -8,11 +8,6 @@ class LocationCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = LocationCategory
-        exclude = []
-        # fields = (
-        #     'pk',
-        #     'name',
-        #     'symbol',
-        #     'is_crypto',
-        #     'price',
-        # )
+        exclude = [
+            'user',
+        ]

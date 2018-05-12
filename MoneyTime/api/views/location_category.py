@@ -12,7 +12,6 @@ from MoneyTime.web.models import LocationCategory
 class LocationCategoryViewSet(viewsets.ModelViewSet):
     """ViewSet for the LocationCategory Model"""
 
-    queryset = LocationCategory.objects.all()
     serializer_class = LocationCategorySerializer
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = (
@@ -20,3 +19,7 @@ class LocationCategoryViewSet(viewsets.ModelViewSet):
         filters.OrderingFilter,
         DjangoFilterBackend,
     )
+
+    def get_queryset(self):
+        user = self.request.user
+        return LocationCategory.objects.filter(user=user)

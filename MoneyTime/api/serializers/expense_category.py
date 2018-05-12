@@ -8,7 +8,9 @@ class ExpenseCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ExpenseCategory
-        exclude = []
+        exclude = [
+            'user'
+        ]
         # fields = (
         #     'pk',
         #     'name',

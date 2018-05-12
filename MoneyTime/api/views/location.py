@@ -11,12 +11,14 @@ from MoneyTime.web.models import Location
 class LocationViewSet(viewsets.ModelViewSet):
         """ViewSet for the Location Model"""
 
-        queryset = Location.objects.all()
         serializer_class = LocationSerializer
-        # filter_class = TransactionFilter
         permission_classes = [permissions.IsAuthenticated]
         filter_backends = (
             filters.SearchFilter,
             filters.OrderingFilter,
             DjangoFilterBackend,
         )
+
+        def get_queryset(self):
+            user = self.request.user
+            return Location.objects.filter(user=user)

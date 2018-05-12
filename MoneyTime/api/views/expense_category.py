@@ -11,7 +11,6 @@ from MoneyTime.web.models import ExpenseCategory
 class ExpenseCategoryViewSet(viewsets.ModelViewSet):
     """ViewSet for the ExpenseCategory Model"""
 
-    queryset = ExpenseCategory.objects.all()
     serializer_class = ExpenseCategorySerializer
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = (
@@ -19,3 +18,7 @@ class ExpenseCategoryViewSet(viewsets.ModelViewSet):
         filters.OrderingFilter,
         DjangoFilterBackend,
     )
+
+    def get_queryset(self):
+        user = self.request.user
+        return ExpenseCategory.objects.filter(user=user)
