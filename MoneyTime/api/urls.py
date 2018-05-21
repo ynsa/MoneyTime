@@ -6,7 +6,6 @@ from django.conf.urls import include
 # 3rd party
 from rest_framework import routers
 from rest_framework.authtoken import views as rest_views
-# from rest_framework.documentation import include_docs_urls
 
 from MoneyTime.api import views as api_views
 
@@ -17,12 +16,9 @@ router.register(r'expense_category', api_views.ExpenseCategoryViewSet, 'expense_
 router.register(r'location', api_views.LocationViewSet, 'location')
 router.register(r'location_category', api_views.LocationCategoryViewSet, 'location_category')
 
-# urls for Django Rest Framework API
 urlpatterns = [
     url(r'v1/', include(router.urls)),
     url(r'^obtain_auth_token/', rest_views.obtain_auth_token)
-
-    # url(r'v1/obtain_token/', api_views.ObtainExpiringAuthToken.as_view()),
 
     # url(r'docs/', include_docs_urls(
     #     title='MoneyTime API',

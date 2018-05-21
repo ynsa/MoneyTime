@@ -95,6 +95,17 @@ DATABASES = {
     },
 }
 
+# DATABASES = {
+#      'default': {
+#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#         'NAME': 'd8dva704g1k0f3',
+#         'USER': 'puafyrjhkyvsic',
+#         'PASSWORD': '0a9ac878bec6a5b5219a45b20317bdf0da5cd6c94d3897752383163ec0456eb7',
+#         'HOST': 'ec2-54-247-95-125.eu-west-1.compute.amazonaws.com',
+#         'PORT': '5432',
+#      },
+#  }
+
 db_from_env = dj_database_url.config(
     default=dj_database_url.config('DATABASE_URL')
 )

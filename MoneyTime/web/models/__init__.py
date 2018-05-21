@@ -3,3 +3,4 @@ from .expense_category import ExpenseCategory
 from .location_category import LocationCategory
 from .location import Location
 from .expense import Expense
+from .prediction import Prediction
